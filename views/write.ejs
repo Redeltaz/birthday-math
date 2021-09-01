@@ -1,3 +1,31 @@
-<h1>Write</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/write.css">
+        <script src="/js/write.js" defer></script>
+        <title>Ecrire un message à Math</title>
+    </head>
 
-<%= message %>
+    <body>
+        <h1>Ecrire un message à Math</h1>
+
+        <form method="POST">
+            <div class="anonyme-content">
+                <p>Cliquez cette case si vous souhaitez être anonyme</p>
+                <input type="checkbox" class="anonyme">
+            </div>
+            <div class="text-content">
+                <input placeholder="Nom / Prénom" name="identifiant" class="identifiant"><br>
+                <textarea placeholder="Votre message" name="message"></textarea><br>
+            </div>
+            <div class="file-content">
+                <p>Vous souhaitez ajouter une photo ? (Ce n'est pas obligatoire)</p>
+                <input type="file" name="file"><br>
+            </div>
+            <input type="submit" value="Envoyer">
+        </form>   
+
+    </body>
+</html>
