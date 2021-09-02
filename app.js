@@ -65,7 +65,7 @@ app.post('/write', (req, res) => {
         
         // const fileName = (req.files) ? Date.now() + path.extname(req.files.file.name) : ''
 
-        db.run(`INSERT INTO messages (id, name, content, file_name) VALUES ('${uuid()}', '${identifiant}', '${message}', '${fileName}')`, err => {
+        db.run(`INSERT INTO messages (id, name, content, file_name) VALUES (?, ?, ?, ?)`, [uuid(), identifiant, message, fileName], err => {
             if (err) throw err;
             console.log('Message ajouté')
 
