@@ -1,12 +1,42 @@
-h1{
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('/img/website/confettis.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.full-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 70%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+h1 {
     text-align: center;
+    margin: 50px 0;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 40px;
+    margin: 50px 0;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .anonyme-content {
@@ -15,20 +45,34 @@ form {
     margin-bottom: 20px;
 }
 
-.anonyme-content p {
+.anonyme-content label {
+    cursor: pointer;
     margin-right: 10px;
 }
 
 .text-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .text-content input {
     margin-bottom: 10px;
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.text-content textarea {
+    width: 60%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
 .file-content {
@@ -36,4 +80,115 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 10px 0;
+}
+
+.file-content p {
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+.img1, .img2 {
+    width: 60px;
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.img2 {
+    width: 60px;
+    animation-name: rotation2;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.submit-button input {
+    font-size: 1.2em;
+    margin: 15px 50px;
+    padding: 15px;
+    border: none;
+    color: white;
+    background-color: rgb(19, 185, 60);
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.329);
+}
+
+form hr {
+    margin-bottom: 20px;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.733);
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 5px;
+    margin: 5% auto;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-button {
+    display: flex;
+    justify-content: center;
+}
+
+#myBtn {
+    font-size: 1.2em;
+    margin: 25px 0;
+    padding: 15px;
+    border: none;
+    color: white;
+    background-color: rgb(19, 185, 60);
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.329); 
+}
+
+.modal-content hr {
+    margin: 20px 0;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to { 
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation2 {
+    from {
+        transform: rotate(360deg);
+    }
+    to { 
+        transform: rotate(0deg);
+    }
+}
+
+@media (max-width: 550px) {
+
+    .text-content input,
+    .text-content textarea {
+        width: 100%;
+    }
 }

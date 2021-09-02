@@ -18,16 +18,39 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault()
 
     if (!messageInput.value.trim()) {
-        alert('C\'est pas fou un message sans contenu...')
+        alert('C\'est pas cool un message sans contenu...')
         return;
     }
     const formData = new FormData(e.target)
 
-    const res = await fetch('/write', {
-        method: "POST",
-        body: formData
-    })
-    const data = await res.json()
-
-    alert(data.message)
+    if(window.confirm("Voulez vous envoyer ce message ?")) {
+        const res = await fetch('/write', {
+            method: "POST",
+            body: formData
+        })
+        const data = await res.json()
+    
+        if (res.status === 200) {
+            window.location.href = '/sended'
+        } else {
+            if(data.message) {
+                alert(data.message)
+            } else {
+                alert('Il y a eu un problème lors de l\'envois')
+            }
+        }
+    }
 })
+
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("myBtn");
+
+btn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

@@ -24,6 +24,10 @@ app.use(express.urlencoded({
 }));
 app.use(upload());
 
+app.get('/', (req, res) => {
+    res.redirect('/write');
+})
+
 app.get('/write', (req, res) => {
     res.render('write');
 })
@@ -31,6 +35,7 @@ app.get('/write', (req, res) => {
 app.post('/write', (req, res) => {
     const identifiant = req.body.identifiant;
     const message = req.body.message;
+    let fileName = '';
 
     try {
         if(!req.files) {
@@ -39,7 +44,7 @@ app.post('/write', (req, res) => {
             const file = req.files.file;
             const size = file.data.length;
             const extension = path.extname(file.name)
-            const fileName = Date.now();
+            fileName = Date.now() + extension;
 
             const allowedExtensions = /png|jpeg|jpg|svg|PNG|JPG|JPEG|SVG/;
 
@@ -53,31 +58,46 @@ app.post('/write', (req, res) => {
                 return;
             }
 
-            file.mv('./public/img/uploaded/' + fileName + extension);
+            file.mv('./public/img/uploaded/' + fileName);
             console.log('file uploaded')
+
         }
         
-        const fileName = (req.files) ? Date.now() + path.extname(req.files.file.name) : null
+        // const fileName = (req.files) ? Date.now() + path.extname(req.files.file.name) : ''
 
         db.run(`INSERT INTO messages (id, name, content, file_name) VALUES ('${uuid()}', '${identifiant}', '${message}', '${fileName}')`, err => {
             if (err) throw err;
             console.log('Message ajouté')
+
+            res.status(200).send({message: 'Merci pour votre message !'})
         })
     } catch(err) {
-        console.log(err)
+        throw err
     }
 })
 
 app.get('/read', (req, res) => {
     const param = req.query.access
+    let messages = []
 
-    if(param === 'adminAccess') {
-        res.render('read', {
-            message: 'hey hey hey'
-        })
+    if(param !== 'adminAccess') {
+        res.send('Vous n\'avez pas les droits pour voir cette page')
     }
 
-    res.send('Vous n\'avez pas les droits pour voir cette page')
+    db.all('SELECT * FROM messages', (err, result) => {
+        if(err) throw err;
+
+        console.log('data retrieved')
+        
+        res.render('read', {
+            messages: result
+        })
+    })
+    
+})
+
+app.get('/sended', (req, res) => {
+    res.render('send')
 })
 
 app.use((req, res) => {

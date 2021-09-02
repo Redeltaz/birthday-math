@@ -1,31 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/write.css">
-        <script src="/js/write.js" defer></script>
-        <title>Ecrire un message à Math</title>
-    </head>
 
-    <body>
-        <h1>Ecrire un message à Math</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/write.css">
+    <script src="/js/write.js" defer></script>
+    <title>Ecrire un message à Math</title>
+</head>
 
-        <form method="POST">
-            <div class="anonyme-content">
-                <p>Cliquez cette case si vous souhaitez être anonyme</p>
-                <input type="checkbox" class="anonyme">
-            </div>
-            <div class="text-content">
-                <input placeholder="Nom / Prénom" name="identifiant" class="identifiant"><br>
-                <textarea placeholder="Votre message" name="message"></textarea><br>
-            </div>
-            <div class="file-content">
-                <p>Vous souhaitez ajouter une photo ? (Ce n'est pas obligatoire)</p>
-                <input type="file" name="file"><br>
-            </div>
-            <input type="submit" value="Envoyer">
-        </form>   
+<body>
+    <div class="full-container">
+        <div class="container">
+            <h1>Ecrire un message à Math</h1>
 
-    </body>
+            <form method="POST">
+                <div class="anonyme-content">
+                    <label for="anonyme">Cliquez cette case si vous souhaitez être anonyme</label>
+                    <input type="checkbox" class="anonyme" name="anonyme" id="anonyme">
+                </div>
+                <div class="text-content">
+                    <input placeholder="Nom / Prénom" name="identifiant" class="identifiant"><br>
+                    <textarea placeholder="Votre message" name="message"></textarea><br>
+                </div>
+                <hr>
+                <div class="file-content">
+                    <p>Vous souhaitez ajouter une photo ? (Ce n'est pas obligatoire)</p>
+                    <input type="file" name="file"><br>
+                </div>
+                <hr>
+                <div class="submit-button">
+                    <img src="/img/website/math.png" alt="math" class="img1">
+                    <input type="submit" value="Envoyer">
+                    <img src="/img/website/math.png" alt="math" class="img2">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <p>Hello tout le monde, j'ai développé ce petit site rapide pour que vous puissiez tous laisser un message 
+                d'anniversaire à Mathieu, c'est ses 25 ans alors soyez original ;) <br><br>
+                Vous n'avez accès qu'à cette page pour lui envoyer un message, Mathieu lui seul aura accès à la page où il pourra
+                voir tous vos messages. Alors n'ayez pas peur, déclaration d'amour, dossier très gênants, photos de lui bourré...
+                Lui seul aura accès aux messages et photos (moi aussi, mais je sais garder des secrets :p)<br><br>
+
+                - Chaque message peut-être marqué comme anonyme en cliquant sur la case en question.<br>
+                - Les textes n'ont aucune limite de taille, libre à vous de lui réciter un livre complet du petit Nicolas (ses préférés).<br>
+                - Vous pouvez ajouter une image à votre message si vous le souhaitez, si vous ne mettez rien, il y aura juste le message.<br>
+                - Une image seulement par message, si vous voulez en mettre plusieurs il faut faire plusieurs messages.<br>
+                - Vous pouvez mettre autant de messages que vous voulez, mais évitez d'en mettre des centaines.<br>
+                - Ne vous inquiétez pas si vous envoyez un message par erreur, le tri sera fait entre vrais et faux messages.<br>
+                - Le bouton pour envoyer une image est mal affiché en format téléphone, ne vous inquiétez pas c'est normal.
+
+            </p>
+            <hr>
+            <p>
+                Lorsque votre message est envoyé, si tout est bon vous serez redirigé sur une page qui vour remerciera du message.<br>
+                S'il y a une erreur vous aurez un message vous indiquant l'erreur (<i>format non prit en charge, taille trop grande...</i>), à vous de la résoudre,
+                néamoins si des erreurs persistent ou que des choses ne marchent pas, n'hésitez pas à me contacter au <b>0601142164</b> (je suis son frère)
+            </p>
+
+            <div class="modal-button">
+                <button id="myBtn">Suivant</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
 </html>
