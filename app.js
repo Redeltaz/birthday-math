@@ -96,6 +96,19 @@ app.get('/read', (req, res) => {
     
 })
 
+app.delete('/delete/:id', (req, res) => {
+    const id = req.params.id
+
+    db.run(`DELETE FROM messages WHERE id = '${id}'`, (err) => {
+        if(err) throw err;
+
+        console.log('data removed')
+        res.status(200).send({
+            messages: 'message supprimé'
+        })
+    })
+})
+
 app.get('/sended', (req, res) => {
     res.render('send')
 })

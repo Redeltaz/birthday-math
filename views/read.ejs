@@ -29,6 +29,7 @@
                     <% if(messages[i].file_name) { %>
                         <img src="/img/uploaded/<%= messages[i].file_name %>" alt="photo">
                     <% } %>
+                    <p class="delete" id="<%= messages[i].id %>">Supprimer</p>
                 </div>
             <% } %>
         </div>
